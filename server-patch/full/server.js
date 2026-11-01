@@ -137,7 +137,7 @@ const server = http.createServer(async (req, res) => {
   };
 
   // 悄悄话实时事件流（SSE）：需要登录；长连接直接接管 res，不走普通路由
-  if (req.method === 'GET' && pathname === '/api/events' && session) {
+  if (req.method === 'GET' && pathname === '/api/push/stream' && session) {
     events.addEventListener(session.who, res);
     return;
   }

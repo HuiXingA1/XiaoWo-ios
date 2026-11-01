@@ -13,7 +13,7 @@
    3) API 分发循环里（`for (const route of api.routes) {` 之前）加：
 
       // 悄悄话实时事件流（SSE）：需要登录，长连接不走普通路由
-      if (req.method === 'GET' && pathname === '/api/events' && session) {
+      if (req.method === 'GET' && pathname === '/api/push/stream' && session) {
         events.addEventListener(session.who, res);
         return;
       }

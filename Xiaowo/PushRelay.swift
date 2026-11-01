@@ -5,7 +5,7 @@ import UserNotifications
 /// 悄悄话实时通知中继
 /// ─────────────────────
 /// WebView 在前台时，网页自己的 8 秒轮询负责界面刷新，这里什么都不做；
-/// WebView 进后台/锁屏后，由本类保持一条 SSE 长连接（GET /api/events），
+/// WebView 进后台/锁屏后，由本类保持一条 SSE 长连接（GET /api/push/stream），
 /// 收到 message 事件就弹本地通知（横幅 + 声音 + 角标）。
 ///
 /// 连接生命周期：
@@ -67,7 +67,7 @@ final class PushRelay: NSObject {
 
         // Cookie：WKWebView 的登录态在 setupWebView 的 websiteDataStore 里，
         // 后台请求走 HTTPCookieStorage —— syncAppCookies 已在进后台前同步过
-        var req = URLRequest(url: base.appendingPathComponent("api/events"))
+        var req = URLRequest(url: base.appendingPathComponent("api/push/stream"))
         req.timeoutInterval = timeoutInterval
         req.setValue("text/event-stream", forHTTPHeaderField: "Accept")
         req.cachePolicy = .reloadIgnoringLocalCacheData
@@ -169,7 +169,7 @@ extension PushRelay: URLSessionDataDelegate {
                     willPerformHTTPRedirection response: HTTPURLResponse,
                     newRequest request: URLRequest,
                     completionHandler: @escaping (URLRequest?) -> Void) {
-        // /api/events 未登录会被 302 到 /login —— 跟过去没有意义，直接断开重连
+        // /api/push/stream 未登录会被 302 到 /login —— 跟过去没有意义，直接断开重连
         completionHandler(nil)
         scheduleReconnect()
     }

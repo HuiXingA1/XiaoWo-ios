@@ -51,7 +51,7 @@ async function main() {
 
     // open SSE as b
     const events = [];
-    const sse = http.request(BASE + '/api/events', { headers: { Cookie: cookieB, Accept: 'text/event-stream' } }, (res) => {
+    const sse = http.request(BASE + '/api/push/stream', { headers: { Cookie: cookieB, Accept: 'text/event-stream' } }, (res) => {
       console.log('SSE status:', res.statusCode, res.headers['content-type']);
       let buf = '';
       res.on('data', (c) => {
