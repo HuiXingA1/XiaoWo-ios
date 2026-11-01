@@ -129,8 +129,8 @@ final class MainViewController: UIViewController, WKUIDelegate {
     func showSetup(firstRun: Bool) {
         let setup = SetupView(frame: view.bounds)
         setup.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        setup.onConnect = { [weak self] text in
-            guard let self else { return }
+        setup.onConnect = { [weak self] text -> Bool in
+            guard let self else { return false }
             let cleaned = text.trimmingCharacters(in: .whitespacesAndNewlines)
             guard let url = Self.normalizeServerURL(cleaned) else {
                 setup.showError("地址看起来不对，要 http:// 或 https:// 开头")
