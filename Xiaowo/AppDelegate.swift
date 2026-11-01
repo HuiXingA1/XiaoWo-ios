@@ -13,6 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = MainViewController()
         window?.makeKeyAndVisible()
+
+        // 进后台 → PushRelay 保持 SSE 长连接收悄悄话事件（回前台由 MainViewController 停掉）
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main
+        ) { _ in
+            PushRelay.shared.handleDidEnterBackground()
+        }
         return true
     }
 

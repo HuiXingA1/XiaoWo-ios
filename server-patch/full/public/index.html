@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#ededed">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="小窝">
+<title>我们的小窝</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/wx.css">
+</head>
+<body class="wx-body">
+
+<div class="wx-app" id="app" hidden>
+
+  <header class="wx-top" id="wxTop">
+    <button class="wx-top__back" id="wxBack" type="button" aria-label="返回" hidden>
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="wx-top__badge" id="wxBackBadge" hidden></span>
+    </button>
+    <div class="wx-top__mid">
+      <div class="wx-top__title" id="pageTitle">聊天</div>
+      <div class="wx-top__sub" id="pageSub" hidden></div>
+    </div>
+    <div class="wx-top__actions" id="wxActions"></div>
+  </header>
+
+  <main class="wx-main content" id="content"></main>
+
+  <nav class="wx-tabbar" id="tabbar" aria-label="主导航"></nav>
+
+</div>
+
+<div class="loading-center" id="boot"><div class="spinner"></div></div>
+
+<script src="/assets/core.js"></script>
+<script src="/assets/views.js"></script>
+<script src="/assets/wx.js"></script>
+<script src="/assets/wx5.js"></script>
+<script src="/assets/wx6.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>

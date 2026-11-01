@@ -1,0 +1,19 @@
+{
+  "name": "小窝 · 专属",
+  "short_name": "小窝",
+  "description": "只属于我们两个人的私密空间",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fdf7f4",
+  "theme_color": "#f4658a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

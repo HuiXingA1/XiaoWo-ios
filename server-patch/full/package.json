@@ -1,0 +1,25 @@
+{
+  "name": "lovers-nest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "只属于两个人的私密空间 —— 零依赖自托管情侣日记",
+  "type": "commonjs",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/smoke.js && node test/render.js",
+    "test:smoke": "node test/smoke.js",
+    "test:render": "node test/render.js",
+    "test:static": "node test/static-check.js",
+    "demo": "node tools/db.js demo && node tools/seed-media.js",
+    "reset": "node tools/db.js reset --yes",
+    "dump": "node tools/db.js dump",
+    "test:remote": "node tools/remote-check.js",
+    "test:loc": "node tools/loc-check.js"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

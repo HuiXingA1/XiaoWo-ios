@@ -37,6 +37,10 @@ final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDele
         setupWebView()
         applyAppearance()
 
+        // 通知：启动即请求授权（对方发悄悄话 → 后台横幅）
+        PushRelay.shared.requestAuthorization()
+        PushRelay.shared.updateServerBase(config.serverBaseURL)
+
         if let base = config.serverBaseURL {
             loadServer(base)
         } else {
@@ -137,6 +141,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDele
                 return false
             }
             self.config.serverBaseURL = url
+            PushRelay.shared.updateServerBase(url)
             self.loadServer(url)
             return true
         }
@@ -175,6 +180,8 @@ final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDele
     @objc private func appWillEnterForeground() {
         // 回前台时刷新一次登录态/新消息（网页自己也会拉，这里兜底）
         bridge?.syncAppCookies { _ in }
+        PushRelay.shared.handleWillEnterForeground()
+        PushRelay.shared.cleanBadge()
     }
 
     // MARK: - WKNavigationDelegate

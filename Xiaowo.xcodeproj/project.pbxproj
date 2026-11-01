@@ -12,6 +12,7 @@
 		AA0001032B000000 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000032B000000 /* AppConfig.swift */; };
 		AA0001042B000000 /* WebBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000042B000000 /* WebBridge.swift */; };
 		AA0001052B000000 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000052B000000 /* SetupView.swift */; };
+		AA0001082B000000 /* PushRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000112B000000 /* PushRelay.swift */; };
 		AA0001062B000000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0000062B000000 /* Assets.xcassets */; };
 		AA0001072B000000 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0000072B000000 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		AA0000052B000000 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		AA0000062B000000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA0000072B000000 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA0000112B000000 /* PushRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushRelay.swift; sourceTree = "<group>"; };
 		AA0000082B000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0000FF2B000000 /* Xiaowo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xiaowo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -55,6 +57,7 @@
 				AA0000032B000000 /* AppConfig.swift */,
 				AA0000042B000000 /* WebBridge.swift */,
 				AA0000052B000000 /* SetupView.swift */,
+				AA0000112B000000 /* PushRelay.swift */,
 				AA0000062B000000 /* Assets.xcassets */,
 				AA0000072B000000 /* LaunchScreen.storyboard */,
 				AA0000082B000000 /* Info.plist */,
@@ -145,6 +148,7 @@
 				AA0001032B000000 /* AppConfig.swift in Sources */,
 				AA0001042B000000 /* WebBridge.swift in Sources */,
 				AA0001052B000000 /* SetupView.swift in Sources */,
+				AA0001082B000000 /* PushRelay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

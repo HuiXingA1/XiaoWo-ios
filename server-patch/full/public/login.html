@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4658a">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>只属于我们的地方</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate__card">
+    <div class="gate__mark">🌷</div>
+    <div class="gate__title" id="gateTitle">只属于我们的地方</div>
+    <div class="gate__sub" id="gateSub">先选你是谁</div>
+
+    <div class="gate__who" id="gateWho">
+      <button class="who-card" type="button" data-who="a">
+        <span class="who-card__avatar" id="whoAvaA">妍</span>
+        <span class="who-card__name" id="whoNameA">妍妍</span>
+      </button>
+      <button class="who-card" type="button" data-who="b">
+        <span class="who-card__avatar" id="whoAvaB">博</span>
+        <span class="who-card__name" id="whoNameB">博博</span>
+      </button>
+    </div>
+
+    <form id="gateForm" autocomplete="off">
+      <div class="gate__field">
+        <input
+          class="gate__input"
+          id="gatePass"
+          type="password"
+          placeholder="我们的暗号"
+          autocomplete="current-password"
+          inputmode="text"
+          required
+          maxlength="64"
+        >
+        <button class="gate__eye" type="button" id="gateEye" aria-label="显示密码">👁</button>
+      </div>
+      <button class="gate__submit" type="submit" id="gateBtn">推 门 进 去</button>
+      <div class="gate__err" id="gateErr"></div>
+    </form>
+
+    <div class="gate__hint">
+      这里没有访客，只有我们<br>
+      门后的每一句、每一张照片，都只留给彼此
+    </div>
+  </div>
+</div>
+
+<script src="/assets/login.js"></script>
+</body>
+</html>
