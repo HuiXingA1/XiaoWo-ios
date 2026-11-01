@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HasAddedAllTemplateOptions</key>
+	<true/>
+	<key>IndexPreferencesEnableStableBreakpoints</key>
+	<true/>
+	<key>SelectedDebuggigDescription</key>
+	<string>Debug</string>
+</dict>
+</plist>
