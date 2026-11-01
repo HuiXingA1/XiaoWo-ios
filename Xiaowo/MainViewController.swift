@@ -4,7 +4,7 @@ import WebKit
 /// WKWebView 全屏壳，加载「小窝」自托管服务器。
 /// 服务器地址第一次启动时让用户填，保存在 UserDefaults；
 /// 之后每次启动直连。网页版保持原样 —— App 只是它的一扇门。
-final class MainViewController: UIViewController, WKUIDelegate {
+final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
     // MARK: - 状态
 
