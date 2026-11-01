@@ -40,6 +40,11 @@ final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDele
         // 通知：启动即请求授权（对方发悄悄话 → 后台横幅）
         PushRelay.shared.requestAuthorization()
         PushRelay.shared.updateServerBase(config.serverBaseURL)
+        // 后台保活：定位必须在**前台**启动，进后台再开会被 iOS 忽略。
+        // 首次启动时页面还没连上，先不弹权限框；等 didFinish 里再要。
+        if config.serverBaseURL != nil {
+            PushRelay.shared.prepareBackgroundKeepAlive()
+        }
 
         if let base = config.serverBaseURL {
             loadServer(base)
@@ -189,6 +194,8 @@ final class MainViewController: UIViewController, WKNavigationDelegate, WKUIDele
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         bridge?.syncAppCookies { _ in }
         hideSetupIfLoaded()
+        // 页面已进入小窝：这时要定位权限才讲得通（地图/距离功能就在眼前）
+        PushRelay.shared.prepareBackgroundKeepAlive()
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
