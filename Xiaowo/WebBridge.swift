@@ -24,7 +24,7 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.activityType = .otherNavigation
+        locationManager.activityType = CLActivityType.otherNavigation
         locationManager.pausesLocationUpdatesAutomatically = false
         installUserScripts()
         observeTitle()
@@ -127,11 +127,11 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
         guard let store = webView?.configuration.websiteDataStore.httpCookieStore,
               let base = baseURL else { completion(nil); return }
         let sema = DispatchSemaphore(value: 0)
-        var syncError: Error?
+        let syncError: Error?
         store.getAllCookies { cookies in
             let target = HTTPCookieStorage.shared
             for c in cookies {
-                if let d = c.domain, d.contains(base.host ?? "") {
+                if let d = c.domain, let host = base.host, d.contains(host) {
                     target.setCookie(c)
                 }
             }
@@ -139,7 +139,7 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
         }
         DispatchQueue.global().async {
             _ = sema.wait(timeout: .now() + 3)
-            completion(syncError)
+            completion(nil)
         }
     }
 
