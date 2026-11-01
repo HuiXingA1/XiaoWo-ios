@@ -1,5 +1,6 @@
 import UIKit
 import WebKit
+import CoreLocation
 
 /// 原生 ⇄ JS 桥。
 /// 目标只有一个：让网页在小窝 App 里更像原生 App，同时**不改网页代码**——
@@ -127,7 +128,6 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
         guard let store = webView?.configuration.websiteDataStore.httpCookieStore,
               let base = baseURL else { completion(nil); return }
         let sema = DispatchSemaphore(value: 0)
-        let syncError: Error?
         store.getAllCookies { cookies in
             let target = HTTPCookieStorage.shared
             for c in cookies {
