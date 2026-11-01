@@ -20,6 +20,7 @@ mkdir -p "$BUILD"
 
 # ---------- 1. 无签名构建 .app ----------
 echo "==> xcodebuild（CODE_SIGNING_ALLOWED=NO）"
+set +e
 xcodebuild \
   -project Xiaowo.xcodeproj \
   -scheme Xiaowo \
@@ -31,7 +32,17 @@ xcodebuild \
   CODE_SIGN_IDENTITY="" \
   CODE_SIGN_ENTITLEMENTS="" \
   ARCHS="arm64" \
-  archive 2>&1 | tail -25
+  archive > "$BUILD/xcodebuild-full.log" 2>&1
+RC=$?
+set -e
+echo "==> xcodebuild exit=$RC (full log: build/xcodebuild-full.log)"
+if [ $RC -ne 0 ]; then
+  echo "======== 编译错误（error: 行上下文）========"
+  grep -n -B2 -A6 "error:" "$BUILD/xcodebuild-full.log" | tail -120
+  echo "======== 失败汇总（末 30 行）========"
+  tail -30 "$BUILD/xcodebuild-full.log"
+  exit $RC
+fi
 
 APP=$(find "$BUILD/Xiaowo.xcarchive/Products/Applications" -name "*.app" -maxdepth 1 | head -1)
 if [ -z "$APP" ]; then
