@@ -131,7 +131,7 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
         store.getAllCookies { cookies in
             let target = HTTPCookieStorage.shared
             for c in cookies {
-                if let d = c.domain, let host = base.host, d.contains(host) {
+                if let host = base.host, c.domain.contains(host) {
                     target.setCookie(c)
                 }
             }
@@ -197,7 +197,7 @@ final class WebBridge: NSObject, CLLocationManagerDelegate, WKScriptMessageHandl
 
     private func startUpdating(id: String) {
         currentGeoId = id
-        if !locationManager.locationServicesEnabled {
+        if !CLLocationManager.locationServicesEnabled() {
             emitGeo(id: id, ok: false, code: 2, msg: "系统定位服务已关闭")
             return
         }
