@@ -1,0 +1,21 @@
+name: Build iOS IPA (unsigned)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build unsigned IPA
+        run: bash scripts/build-ipa.sh
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: xiaowo-unsigned-ipa
+          path: artifact/xiaowo-unsigned.ipa
+          if-no-files-found: error
